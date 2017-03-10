@@ -1,0 +1,261 @@
+{# src/Resources/views/Task/new.html.twig #}
+
+{# 取消HTML5默认的表单认证#}
+{{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+{#{{ form_errors(form) }}#}
+{#{{ form.vars.value.task }}#}
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="table-responsive">
+            <table id="generate-index-table" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th class="center generate-index-table-th generate-index-table-th-val">
+                        <a class="sortable"  title="title">Title</a>
+                    </th>
+                    <th class="center generate-index-table-th generate-index-table-th-val">
+                        <a class="sortable"  title="digest">Digest</a>
+                    </th>
+                    <th class="center generate-index-table-th generate-index-table-th-extra">
+                        <a class="sortable"  title="picture">Picture</a>
+                    </th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                       <td>asd</td>
+                       <td>sss</td>
+                       <td>vvb</td>
+                    </tr>
+
+                    <tr>
+                        <td>asd</td>
+                        <td>sss</td>
+                        <td>vvb</td>
+                    </tr>
+
+                    <tr>
+                        <td>asd</td>
+                        <td>sss</td>
+                        <td>vvb</td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{#{{ knp_menu_render('AcmeDemoBundle:Builder:MainMenu') }}#}
+{#{% block form_row %}#}
+    {#{% spaceless %}#}
+        {#<div class="form_row">#}
+            {#{{ form_label(form) }}#}
+            {#{{ form_errors(form) }}#}
+            {#{{ form_widget(form) }}#}
+        {#</div>#}
+    {#{% endspaceless %}#}
+{#{% endblock form_row %}#}
+
+
+
+
+{#{{ form_start(form) }}#}
+    {#{{ form_errors(form) }}#}
+
+{#<div>#}
+    {#{{ form_label(form.task) }}#}
+    {#{{ form_errors(form.task) }}#}
+    {#{{ form_widget(form.task) }}#}
+{#</div>#}
+
+{#<div>#}
+    {#{{ form_label(form.dueDate) }}#}
+    {#{{ form_errors(form.dueDate) }}#}
+    {#{{ form_widget(form.dueDate) }}#}
+{#</div>#}
+
+{#<div>#}
+    {#{{ form_widget(form.save) }}#}
+{#</div>#}
+
+{#{{ form_end(form) }}#}
+
+
+
+{#<div class="container banners" style="height: 300px; width: 500px">#}
+
+    {#<div class="banner main max-container">#}
+        {#<div id="banner-carousel" class="carousel slide" data-ride="carousel">#}
+            {#<!-- Indicators -->#}
+            {#<ol class="carousel-indicators">#}
+                {#<li data-target="#banner-carousel" data-slide-to="0" class=""></li>#}
+                {#<li data-target="#banner-carousel" data-slide-to="1" class=""></li>#}
+                {#<li data-target="#banner-carousel" data-slide-to="2" class=""></li>#}
+                {#<li data-target="#banner-carousel" data-slide-to="3" class="active"></li>#}
+                {#<li data-target="#banner-carousel" data-slide-to="4" class=""></li>#}
+            {#</ol>#}
+            {#<!-- Wrapper for slides -->#}
+            {#<div class="carousel-inner">#}
+
+                {#<div class="item">#}
+
+
+                    {#<a href="http://mp.weixin.qq.com/s?__biz=MzA4NDM2MzY3Nw==&mid=503729352&idx=1&sn=8b3d29981179bc0eeeb9e021d9e2cc42#rd" target="_blank">#}
+                        {#<img src="http://mmbiz.qpic.cn/mmbiz/N8dNgAsAGrMX36EVLDEN9W4HZ34DS47n5PRkxzEHj04aknFibMWO6zoGTicXDU2O0Oopiarym4JszicvP3wdhpL87w/0?wx_fmt=jpeg" alt="预告 | 玩转这一夏">#}
+                    {#</a>#}
+
+                {#</div>#}
+
+                {#<div class="item">#}
+
+
+                    {#<a href="http://mp.weixin.qq.com/s?__biz=MzA4NDM2MzY3Nw==&mid=503729352&idx=2&sn=0ff3a80aeb0e10f9ee84b8895ee5827c#rd" target="_blank">#}
+                        {#<img src="http://mmbiz.qpic.cn/mmbiz/N8dNgAsAGrOEFibzOJic8dMYu8zQryrZx8ibUOjeen0P1C4cu5kUmnRdMvTcApxNlwE49l9SKXFG6wtex8u0nECmQ/0?wx_fmt=jpeg" alt="预告 | 玩转这一夏">#}
+                    {#</a>#}
+
+                {#</div>#}
+
+                {#<div class="item">#}
+
+
+                    {#<a href="http://mp.weixin.qq.com/s?__biz=MzA4NDM2MzY3Nw==&mid=503729352&idx=3&sn=dda6cea346699a4cda2e777b88fb2a14#rd" target="_blank">#}
+                        {#<img src="http://mmbiz.qpic.cn/mmbiz/N8dNgAsAGrMX36EVLDEN9W4HZ34DS47nUQJt7icmYJyQaicEH8OWG7SWds6zvialhmQ04zicG0IUlHWZj0VcicibHonw/0?wx_fmt=jpeg" alt="预告 | 玩转这一夏">#}
+                    {#</a>#}
+
+                {#</div>#}
+
+                {#<div class="item active">#}
+
+
+                    {#<a href="http://mp.weixin.qq.com/s?__biz=MzA4NDM2MzY3Nw==&mid=503729352&idx=4&sn=d03337459f2632dc105d0135c9363bd7#rd" target="_blank">#}
+                        {#<img src="http://mmbiz.qpic.cn/mmbiz/N8dNgAsAGrOEFibzOJic8dMYu8zQryrZx8ricFa37xO0Kia7icc1yIcr2pChz5m3aWRIAkHgibHLtyeyiaPJeCyehjXjA/0?wx_fmt=jpeg" alt="预告 | 玩转这一夏">#}
+                    {#</a>#}
+
+                {#</div>#}
+
+                {#<div class="item">#}
+
+
+                    {#<a href="http://mp.weixin.qq.com/s?__biz=MzA4NDM2MzY3Nw==&mid=503729352&idx=5&sn=f40cdf97b34c1a84ecf724f9791275e0#rd" target="_blank">#}
+                        {#<img src="http://mmbiz.qpic.cn/mmbiz/N8dNgAsAGrOEFibzOJic8dMYu8zQryrZx8bBgSibAZ1LDvKKtfBqx05C6Aaw1qSEWRw9wyhNIfMt0RBelhz5sOPSw/0?wx_fmt=jpeg" alt="预告 | 玩转这一夏">#}
+                    {#</a>#}
+
+                {#</div>#}
+
+
+            {#</div>#}
+
+            {#<!--  old Controls -->#}
+            {#<a class="left carousel-control" href="#banner-carousel" role="button" data-slide="prev">#}
+                {#<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>#}
+            {#</a>#}
+            {#<a class="right carousel-control" href="#banner-carousel" role="button" data-slide="next">#}
+                {#<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>#}
+            {#</a>#}
+
+
+        {#</div>#}
+
+    {#</div>#}
+
+
+{#</div>#}
+
+
+
+
+
+
+
+<div class="col-xs-12">
+    <div class="row">
+        <div class="col-xs-4 col-md-6">                            </div>
+
+
+    </div>
+    <div class="space"></div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="table-responsive">
+                <table id="generate-index-table" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th class="center generate-index-table-th generate-index-table-th-type">
+                            素材類型
+                        </th>
+                        <th class="center generate-index-table-th generate-index-table-th-name">
+                            <a class="sortable" href="/app_dev.php/admintools/wechat/media_news/?sort=q.name&amp;direction=asc&amp;page=1" title="素材名稱">素材名稱</a>
+                        </th>
+                        <th class="center generate-index-table-th generate-index-table-th-mediaId">
+                            媒體ID
+                        </th>
+                        <th class="center generate-index-table-th generate-index-table-th-updatedAt">
+                            <a class="sortable" href="/app_dev.php/admintools/wechat/media_news/?sort=q.updatedAt&amp;direction=asc&amp;page=1" title="更新時間">更新時間</a>
+                        </th>
+                        <th class="center generate-index-table-th generate-index-table-th-_actions">
+
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="generate-index-table-td generate-index-table-td-type">TEXT_MATERIAL_NEWS</td>
+                        <td class="generate-index-table-td generate-index-table-td-name">即按即用餐饮券免费领取！</td>
+                        <td class="generate-index-table-td generate-index-table-td-mediaId">LJSP3gQy-19JafLKi6qZocqfMCuZ-OGD90NCxyHozyo</td>
+                        <td class="generate-index-table-td generate-index-table-td-updatedAt">2016-06-29 09:33</td>
+                        <td class="generate-index-table-td generate-index-table-td-_actions center">    <div class="btn-group wiz-margin-right-xl">
+                                <button data-toggle="dropdown" class="btn btn-xs btn-primary btn-white dropdown-toggle">
+                                    操作
+                                    <i class="ace-icon fa fa-angle-down icon-on-right"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="javascript:void(0)" data-msg="即按即用餐饮券免费领取！" class="btn btn-xs btn-info" data-action="article" data-id="LJSP3gQy-19JafLKi6qZocqfMCuZ-OGD90NCxyHozyo" data-value="article"><i class="ace-icon fa fa-line-chart"></i>Article</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="generate-index-table-td generate-index-table-td-type">TEXT_MATERIAL_NEWS</td>
+                        <td class="generate-index-table-td generate-index-table-td-name">预告 | 玩转这一夏</td>
+                        <td class="generate-index-table-td generate-index-table-td-mediaId">LJSP3gQy-19JafLKi6qZoZ89BHbIbRLOjM-tcKSTW1Q</td>
+                        <td class="generate-index-table-td generate-index-table-td-updatedAt">2016-06-29 03:13</td>
+                        <td class="generate-index-table-td generate-index-table-td-_actions center">    <div class="btn-group wiz-margin-right-xl">
+                                <button data-toggle="dropdown" class="btn btn-xs btn-primary btn-white dropdown-toggle">
+                                    操作
+                                    <i class="ace-icon fa fa-angle-down icon-on-right"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="javascript:void(0)" data-msg="预告 | 玩转这一夏" class="btn btn-xs btn-info" data-action="article" data-id="LJSP3gQy-19JafLKi6qZoZ89BHbIbRLOjM-tcKSTW1Q" data-value="article"><i class="ace-icon fa fa-line-chart"></i>Article</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+

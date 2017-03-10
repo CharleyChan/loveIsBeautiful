@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CKEditor</title>
+    <script src="ckeditor/ckeditor.js"></script>
+</head>
+<body>
+<form name="form" action="#" method="post">
+    <textarea name="content" id="content" rows="10" cols="80">
+
+    </textarea>
+    <script>
+        CKEDITOR.replace('content',{
+            //輸入客製化條件
+            width:1000,//設定內容編輯器
+            height:500,
+        });
+
+        function processData(){
+            //geting data
+            var data = CKEDITOR.instances.content.getData();
+            document.write(data);
+        }
+    </script>
+    <input type="button" value="送出" onclick="processData()">
+</form>
+</body>
+</html>

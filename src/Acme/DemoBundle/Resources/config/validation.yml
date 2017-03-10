@@ -1,0 +1,38 @@
+# src/Acme/DemoBundle/Resources/config/validation.yml
+Acme\DemoBundle\Entity\Author:
+    properties:
+        name:
+            - NotBlank: ~
+            - Range:
+                min: first day of January
+                max: first day of January next year
+        firstName:
+            - NotBlank: ~
+            - Length:
+                min: 3
+        email:
+            - Email: { groups: [registration] }
+        password:
+            - NotBlank: { groups: [registration]}
+            - Length: { min: 7, groups: [registration]}
+        city:
+            - Length:
+                min: 2
+
+    getters:
+        passwordLegal:
+            - 'IsTrue': { message: 'The password cannot match your first name'}
+
+
+
+
+Acme\DemoBundle\Entity\Task:
+    properties:
+        task:
+            - NotBlank: ~
+        dueDate:
+            - NotBlank: ~
+            - Type: \DateTime
+
+
+

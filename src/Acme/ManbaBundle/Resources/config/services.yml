@@ -1,0 +1,11 @@
+services:
+#    acme_manba.example:
+#        class: Acme\ManbaBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+
+    acme_manba.menu_builder:
+        class: Acme\ManbaBundle\Menu\MenuBuilder
+        arguments: ["@knp_menu.factory"]
+        tags:
+            - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }
+            - { name: knp_menu.menu_builder, method: createSidebarMenu, alias: sidebar}

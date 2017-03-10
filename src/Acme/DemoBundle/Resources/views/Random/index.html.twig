@@ -1,0 +1,25 @@
+{# src/Acme/DemoBundle/Resources/views/Random/index.html.twig #}
+ {% extends '::base.html.twig' %}
+ {#{% block title %}Welcome{% endblock %}#}
+ {#{% block body %}#}
+  {#Number: {{ luckyNumberList }}#}
+ {#{% endblock %}#}
+
+
+{#{% for flash_message in app.session.flashBag.get('notice') %}#}
+ {#<div class="flash-notice">#}
+  {#{{ flash_message }}#}
+ {#</div>#}
+{#{% endfor %}#}
+
+{% block title %}My cool blog posts{% endblock %}
+ {% block sidebar %}
+  <ul>
+   <li><a href="/">Admin</a></li>
+   <li><a href="/blog">Test</a></li>
+  </ul>
+  {{ parent() }}
+ {% endblock %}
+{% block body %}
+ <h2> test ...</h2>
+{% endblock %}

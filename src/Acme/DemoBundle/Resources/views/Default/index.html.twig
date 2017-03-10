@@ -1,0 +1,205 @@
+<html>
+<head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs
+/jquery/1.4.0/jquery.min.js"></script>
+    <script type="text/javascript">
+
+//        $(document).ready(function(){
+//
+//            $("button").click(function(){
+//                    $("p").hide('fast');
+//                    $("p").hide('slow');
+//                    $("p").toggle('slow');//顯示被隱藏的內容,隱藏被顯示的內容,來回切換
+//                $('p').slide('slow');//淡出
+//                $('p').slideToggle('slow',setCss());//滑動切換
+//                $("p").animate({left:'250px',top:'300px'},1000);//動畫效果
+
+
+//                var p=$("p");
+//                p.animate({height:'300px',opacity:'0.4'},"slow");
+//                p.animate({width:'300px',opacity:'0.8'},"slow");
+//                p.animate({height:'100px',opacity:'0.4'},"slow");
+//                p.animate({width:'100px',opacity:'0.8'},"slow");
+
+//                $("p").css("color","white").css("background","black").slideUp(2000).slideDown(2000);//鏈接技術 chaining
+//
+//            });
+//
+//            function setCss() {
+//                $("p").css("background-color","red");
+//                $("p").css("font-size","20px");
+//            }
+//
+//
+//        });
+
+//        var jq=jQuery.noConflict();//這樣可以用自己定義的標識符來代替$
+//        jq(document).ready(function(){
+//
+//            jq("button").click(function(){
+////                    $("p").hide();
+//                jq("p").css("background-color","red");
+//                jq("p").css("font-size","20px");
+//                });
+//
+//
+//        });
+
+
+
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        alert("Text: " + $("#test").text());
+        $("#test").text('這是點擊后<i>新增</i>的文字!!!')
+
+
+    });
+    $("#btn2").click(function(){
+//        alert("HTML: " + $("#test").html());
+        //支持回調函數
+        $("#test").html(function(i,origText){
+            return "Old html: " + origText + " New html: Hello <b>world!</b> (index: " + i + ")";
+        });
+    });
+    $("#btn3").click(function(){
+        alert("HTML: " + $("#test3").val());
+        $("#test3").val('理想');
+        //支持回調函數
+        $("#test3").val(function(i,origText){
+            return "Old Val: " + origText + " New Val: Hello world! index: (" + i + ")";
+        });
+    });
+
+    //改變屬性值
+    $("#changeAttr").click(function(){
+//        $("#w3s").attr({
+//            "href" : "http://www.w3school.com.cn/jquery/",
+//            "title" : "W3School jQuery 教程"
+//        });
+        //支持回調函數
+        $("#w3s").attr("href", function(i,origValue){
+            return origValue + "/jquery/index";
+        });
+    });
+
+    //在被選元素的開頭追加文本
+    $('#prePend').click(function () {
+        $("ul").prepend("<li>Pended text</li> ");
+    });
+
+    //在被選元素的结尾追加文本
+    $('#append').click(function () {
+        $("ul").append("<li>Appended text</li> ");
+    });
+
+
+
+    $('#removeDiv').click(function () {
+//        $("#div1").remove();//删除被选元素及其子元素
+        $("#div1").empty();//删除被选元素的子元素
+    });
+
+
+    //添加class
+    $('.addClass').click(function () {
+//        $("h1,h2").addClass("important blue");
+//        $(".div2").addClass("important");
+        $("h1,h2,.div2").toggleClass("blue");//切換增、刪class
+        $(this).css({"background-color":"yellow","font-size":"200%"});
+    });
+
+
+    //Ajax
+    $('#btnAjax').click(function () {
+        $('#testAjax').load('ajax.txt');
+    });
+
+
+});
+
+
+
+
+
+
+    </script>
+
+
+
+    {#樣式#}
+    <style type="text/css">
+        .important
+        {
+            font-weight:bold;
+            font-size:xx-large;
+        }
+        .blue
+        {
+            color:blue;
+        }
+    </style>
+
+
+</head>
+
+<body>
+{#<h2>This is a heading</h2>#}
+{#<p style="background:#98bf21;height:100px;width:100px;position:relative;">This is a paragraph.</p>#}
+{#<button type="button">Click me</button>#}
+
+<p id="test">这是段落中的<b>粗体</b>文本。</p>
+<button id="btn1">显示文本</button>
+<button id="btn2">显示 HTML</button>
+
+
+<p>姓名：<input type="text" id="test3" value="米老鼠"></p>
+<button id="btn3">显示值</button>
+
+
+
+<p><a href="http://www.w3school.com.cn" id="w3s">W3School.com.cn</a></p>
+<button id="changeAttr">改变 href 和 title 值</button>
+
+<ul>
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+    <li>d</li>
+</ul>
+<button id="prePend">在ul->li前面追加文本</button>
+<button id="append">在ul->li後面追加文本</button>
+<br>
+<br>
+<br>
+
+<div id="div1" style="height:100px;width:300px;border:1px solid black;background-color:yellow;">
+    This is some text in the div.
+    <p>This is a paragraph in the div.</p>
+    <p>This is another paragraph in the div.</p>
+</div>
+
+<br>
+<button id="removeDiv">删除 div 元素</button>
+<br>
+<br>
+<br>
+<br>
+<h1>标题 1</h1>
+<h2>标题 2</h2>
+<div class="div2">这是非常重要的文本！</div>
+<br>
+<button class="addClass">向元素添加类</button>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h3 id="testAjax">请点击下面的按钮，通过 jQuery AJAX 改变这段文本。</h3>
+<button id="btnAjax" type="button">获得外部的内容</button>
+
+</body>
+</html>
+

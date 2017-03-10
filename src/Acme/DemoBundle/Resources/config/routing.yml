@@ -1,0 +1,76 @@
+acme_demo_homepage:
+    path:     /acme_demo_homepage
+    defaults: { _controller: AcmeDemoBundle:Default:index }
+
+random:
+    path:     /random
+    defaults:
+        _controller: AcmeDemoBundle:Random:show
+        title:    'Welcome Back !'
+
+Article:
+    path:     /article/{max}
+    defaults:
+        _controller: AcmeDemoBundle:Article:recentArticles
+
+
+hi:
+    path:     /hi/{name1}/{name2}
+    defaults:
+        _controller: AcmeDemoBundle:Hello:index
+        page:        999
+        title:       "hello world"
+
+sendEmail:
+    path:     /sendEmail
+    defaults:
+        _controller: AcmeDemoBundle:Hello:sendEmail
+
+
+task:
+    path:     /task
+    defaults: { _controller: AcmeDemoBundle:Task:new }
+
+
+product:
+    path:     /product
+    defaults: { _controller: AcmeDemoBundle:Product:createProduct }
+
+blog:
+    path:     /blog/{page}
+    defaults:
+        _controller: AcmeDemoBundle:Random:pageshow
+        page:        1
+    host:     blog2.l.wizmacau.com
+#    condition: "context.getMethod() in ['GET', 'HEAD'] and request.headers.get('User-Agent') matches '/firefox/i'"
+    requirements:
+        page: \d+
+
+
+blog_show:
+    path:     /blog/{slug}/{_locale}
+    defaults:
+        _controller: AcmeDemoBundle:Random:show
+        _locale:     en
+    requirements:
+        _locale: en|fr
+
+
+author:
+    path:     /author
+    defaults:
+        _controller: AcmeDemoBundle:Author:author
+
+
+
+tank:
+    path:     /tank
+    defaults:
+        _controller: AcmeDemoBundle:Tank:new
+
+
+
+
+
+
+

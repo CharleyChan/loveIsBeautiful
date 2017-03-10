@@ -1,0 +1,4 @@
+<h1>{{ article.title|capitalize }}</h1>
+<p>{{ article.content|striptags|slice(0, 255) }}</p>
+<p>Tags: {{ article.tags|sort|join(", ") }}</p>
+<p>Activate your account before{{ 'next Monday' |date('M j.Y')}}</p>

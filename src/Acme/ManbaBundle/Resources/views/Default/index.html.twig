@@ -1,0 +1,5 @@
+{{ knp_menu_render('main') }}
+<hr/>
+{% set menu = knp_menu_get('sidebar', [], {include_homepage: true}) %}
+{{ knp_menu_render(menu) }}
+{#{{ knp_menu_render('AcmeManbaBundle:Builder:mainMenu') }}#}

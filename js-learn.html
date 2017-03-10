@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Learning</title>
+    <script type="text/javascript">
+        //        function b() {
+        //            var myVar ;
+        //            console.log(myVar);
+        //        }
+        //        function a(){
+        //           var myVar = 2;
+        //            b();
+        //            console.log(myVar);
+        //        }
+        //
+        //        var myVar =1;
+        //        console.log(myVar);
+        //        a();
+        //        console.log(myVar);
+        //
+        //        //JS閉包 closures
+        //
+        //        function greet(whattosay){
+        //            return function (name) {
+        //                console.log(whattosay+' '+name);
+        //            }
+        //        }
+        //        var guest = greet('Welcome Back');
+        //        guest('Charley');
+        //
+        //
+        //        function buildFunctions(){
+        //            var arr = [];
+        //            for (var i=0; i<3;i++){
+        //                //只會把function(){console.log(i)}放入到arr數組的每個元素中,並沒有執行這個"匿名函數"
+        //                arr.push(
+        //                        function () {
+        //                            console.log(i);
+        //                        }
+        //                );
+        //            }
+        //            return arr;
+        //        }
+        //        var fs = buildFunctions();
+        //        fs[0]();//result 3
+        //        fs[1]();//result 3
+        //        fs[2]();//result 3
+
+        //        function buildFunction2(){
+        //            i=6;
+        //            function number(){
+        //                console.log(i);
+        //            }
+        //            return number;
+        //        }
+        //
+        //        var output = buildFunction2();
+        //        console.log(output);
+        //        output();
+
+        //        function buildFunctions(){
+        //            var arr = [];
+        //            for (var i=0; i<3;i++){
+        //                let j = i; //把每次i的值存儲到不同的記憶體位置
+        //                arr.push(
+        //                    function () {
+        //                        console.log(j);
+        //                    }
+        //                );
+        //            }
+        //            return arr;
+        //        }
+        //        var fs = buildFunctions();
+        //        fs[0]();//result 0
+        //        fs[1]();//result 1
+        //        fs[2]();//result 2
+        //        function makeSayHi(language){
+        //            return function (name) {
+        //                if (language=='en'){
+        //                    console.log('Hello '+name);
+        //                }
+        //                if (language=='zh'){
+        //                    console.log('你好 '+name);
+        //                }
+        //            }
+        //        }
+        //        var sayHiEnglish = makeSayHi('en');
+        //        var sayHiChinese = makeSayHi('zh');
+        //
+        //        sayHiEnglish('Charley');
+        //        sayHiChinese('查理');
+        //
+        //        function SayHiLater(name){
+        //            var greeting = 'Hello, ';
+        //            setTimeout(function(){
+        //                window.alert(greeting + name);
+        //            },3000);
+        //        }
+        //        SayHiLater('Charley');
+
+        //        function callBackYourName(callback){
+        //            var greeting = 'Here is some work ....';
+        //            callback(greeting);
+        //        }
+        //        callBackYourName(function (greeting) {
+        //            console.log(greeting);
+        //            console.log('My name is Charley!');
+        //        });
+
+        //學習一
+        //js允許把對變量或函數的調用寫在其定義聲明前,這是因為js的hoisting概念
+        //hoisting概念: "Hoisting is JavaScript's default behavior of moving declarations to the top."
+        //js默認會把定義的變項移到最前面先執行
+        //所以下面這樣寫是可以的
+        //        b();
+        //        console.log(a);
+        //        var a = 'Hello World!';
+        //        function b(){
+        //            console.log('Called b() function');
+        //        }
+        //        var a='hello';
+        //         a= undefined; //undefined is a special key value in JavaScript
+        //        console.log(a);//output undefined
+        //在JavaScript中，undefined和not defined是不同的，
+        //undefined是尚未給定已宣告變項的值，但是not defined則是該變項尚未宣告過，執行後會出現錯誤訊息！
+        //        function a(){
+        //            function b() {
+        //                console.log(myVar);
+        //            }
+        //            var myVar = 2;
+        //            b();
+        //
+        //        }
+        //        var myVar = 1;
+        //        a();
+
+        //JavaScript Engine會先把execution context的內容執行完畢，接著才去執行"event queue"
+        //        function waitThreeSeconds() {
+        //            var ms = 3000+new Date().getTime();
+        //            while (new Date() < ms){}
+        //            console.log("finished function");
+        //        }
+        //        function clickHandler(){
+        //            console.log("click event!");
+        //        }
+        //        document.addEventListener('click',clickHandler);
+        //        console.log("started execution");
+        //        waitThreeSeconds();
+        //        console.log("finished execution");
+
+
+        //        var w = 3*5+4/2;
+        //        console.log(w);
+        //
+        //        var a = 4+5-7;
+        //        var b=2,c=3,d=4;
+        //        b=c=d;//right-to-left執行
+        //        console.log(a);
+        //        console.log(b);
+        //        console.log(c);
+        //        console.log(d);
+
+        //        var t = 1+'2';//這裡會把數字1當做字符串來處理
+        //        console.log(t);
+        //        console.log(typeof(t));
+
+        //        function greet(name){
+        //            name = name || 'Enter your name here';//給Js函數的參數設置默認值 ||優先級比=高
+        //            console.log('hello '+name);
+        //        }
+        //        greet();
+
+
+        //創建對象
+
+        //        var person = new Object();
+        //        //way 1
+        //        person['firstName']="chen";
+        //        person['lastName']="chao";
+        //        var firstName = "firstName";
+        //        console.log(person[firstName]);
+        //        console.log(person['lastName']);
+        //
+        //        //way 2
+        //        person.hobby="basketball";
+        //        person.favorFood="fruit";
+        //        console.log(person.hobby);
+        //        console.log(person.favorFood);
+        //        console.log(person);
+        //        //在person對象里再添加一個類屬性
+        //        person.address = new Object();
+        //        person.address.country = 'China';
+        //        person.address.city='ZhuHai';
+        //        console.log(person.address.country);
+        //        console.log(person['address']['city']);
+        //        console.log(person.address);
+
+        //        var Charley = {
+        //            firstName:'chen',
+        //            lastName:'chao',
+        //            address:{
+        //                country:'China',
+        //                city: 'ZhuHai'
+        //            }
+        //        };
+        //        console.log(Charley.firstName);
+        //        function sayHiToSomeOne(obj){
+        //            console.log('Hi '+obj.firstName);
+        //        }
+        //        sayHiToSomeOne(Charley);
+
+        //        var greet ='hello';
+        //        var greet ='你好';
+        //        console.log(greet);
+
+        //將對象轉成JSON格式
+        //        var person={
+        //            firstName:'Chan',
+        //            lastName:'Charley',
+        //            address:{
+        //                country:'China',
+        //                city:'HeYuan'
+        //            }
+        //        };
+        //        console.log(JSON.stringify(person));
+        //        //將JSON格式轉成對象
+        //        var json_string='{"first":"abc","adress":{"country":"China"}}';
+        //        console.log(JSON.parse(json_string));
+
+
+        //函數也是對象的一種(functions are object)（一級函式）
+        //        function greet(){
+        //            console.log("Hello");
+        //        }
+        //        greet.language = 'english';//可以把函數當做對象來看待,給函數增加屬性
+        //        console.log(greet);
+        //        greet();
+        //        console.log(greet());
+        //        console.log(greet.language);
+
+
+        //Function Statements 可以寫在聲明前調用
+        //        greeting();
+        //        function greeting(){
+        //            console.log("Hi");
+        //        }
+
+        //Function Expression 若是使用Function Expressions，沒辦法在function建立前即去執行該function(會出現錯誤)。
+        //        greeting();
+        //        var greeting = function(){
+        //            console.log("Hello");
+        //        };
+
+        //        function log(a) {
+        //            console.log(a);
+        //        }
+        //        log('ss');
+        //        log(123);
+        //        log(function () {
+        //           return '我是匿名函數';
+        //        }());//用函數來做參數,并把它執行傳進log函數
+
+
+        //JS 類似By value(傳值參考)概念
+        //a和w其實是存在於兩個不同的記憶體位置
+        //        var a=30;
+        //        var w;
+        //        w=a;
+        //        a='string';
+        //        console.log(a);//string
+        //        console.log(w);//30
+
+        //JS 類似By reference(傳址參考)概念
+        //d和c是存在於相同的記憶體位置
+        //        var d = {greeting:'hello'};
+        //        var c;
+        //        c=d;
+        //        console.log(d);
+        //        console.log(c);
+        //        d.greeting='halo';
+        //        console.log(d);
+        //        console.log(c);
+        //
+        //        function changeValue(obj){
+        //            obj.greeting='hi';
+        //        }
+        //        changeValue(d);
+        //        console.log(d);
+        //        console.log(c);
+
+        //若是使用object literal的方式來建立物件，則會變成類似by Value，新增了一個記憶體的位置。
+        //        c={greeting:'hiHello'};
+        //        console.log(d);//hi
+        //        console.log(c);//hiHello
+
+        //類似傳值參考
+        //        var aaa='string';
+        //        function run(xyz){
+        //            xyz='world';
+        //        }
+        //        run(aaa);
+        //        console.log(aaa);
+        //
+        //        function a(){
+        //            this.newProperty='create a new property';
+        //        }
+        //        a();
+        //        console.log(this);
+        //        console.log(newProperty);
+
+        //
+        //        var c={
+        //            name: 'charley',
+        //            log: function () {
+        //                this.name = 'change c Object name property value!'
+        //                console.log(this);
+        //                //試圖再次修改name的value
+        //                var setName = function (newName) {
+        //                    this.name=newName;
+        //                };
+        //                setName('NewName for c Object name');//這裡不會改變c Object的name ,會在window Object上增加一個屬性叫name,value='NewName for c Object name'
+        //                //原來我們剛剛在函式setName裡面的this，指稱到的是global object (window object)，而不再是剛剛的object C！
+        //                console.log(this);
+        //            }
+        //        };
+        //        c.log();
+        //        console.log(this);
+
+        //JS arguments
+        //        function myFavorite(phone,food,job){
+        //            job = job || "developer";
+        //            if (arguments.length===0){
+        //                console.log('please insert parameters');
+        //                return false;
+        //            }
+        //            console.log(arguments);
+        //            console.log('------------');
+        //        }
+        //        myFavorite();
+        //        myFavorite('LG');
+        //        myFavorite('LG','ICE');
+        //        myFavorite('LG','ICE','developer');
+
+        //JS 展開運算子(spread)
+        //        function myFavorite(phone,food,job, ...other){
+        //
+        //            console.log(other);
+        //            console.log(phone+food+job+other);
+        //        }
+        //
+        //        myFavorite('LG','ICE','developer');
+        //        myFavorite('LG','ICE','developer','hello','world');
+
+
+        //typeof
+        //        var d = [];
+        //        console.log(typeof d);  //  object
+        //        console.log(Object.prototype.toString.call(d)); //  [object Array]
+        //
+        //
+        //        function Person(name){
+        //            this.name = name;
+        //        }
+        //
+        //        console.log(typeof Person); //  function
+        //
+        //        var f = new Person("Jane");
+        //        console.log(typeof f);  //  object
+        //
+        //        console.log(typeof undefined);  //  undefined
+        //        console.log(typeof null); //  object
+
+
+        // Immediately Invoked Functions Expressions (IIFEs)
+        //IIFEs指的就是透過function expression的方式來建立函式，並且立即執行它
+        //        var sayWelcome = function (name) {
+        //            return ("Welcome "+name);
+        //        }('Charley Chan');
+        //        console.log(sayWelcome);
+        //
+        //        //用括號( )把function( ){ }包起來
+        //        //以在建立這個function的同時，將這個function加以執行，我們同樣只需要在最後加上括號( )就可以
+        //        (function (name) {
+        //            console.log ('Hi '+name);
+        //        }('Jack'));
+
+        //        ({
+        //            name:"PJCHEN",
+        //            interest:"website engineer"
+        //        });
+        //這個變數greeting就被建立在function的這個execution context 中，而不是被建立在Global Execution Context中
+        //在IIFEs中所建立的變數，都不會影響到Global Execution Context所建立的變數
+        //它避免了我們的變數間可能會互相干擾覆蓋的情況
+        //放在IIFEs裡面的變數，並不會影響到其他外層的變數，也不會被外層的變數影響到
+        //        var greeting = 'Hello';
+        //        (function (name) {
+        //             var greeting = 'Welcome';
+        //            console.log(greeting+' '+name);
+        //        }('Charley'));
+        //
+        //        console.log(greeting);//Hello
+
+        //希望function execution這層的變數能夠同時影響到Global Execution Context的變數
+        //        var greeting = 'Hello';
+        //        (function (global,name) {
+        //            var greeting = 'Welcome';
+        //            global.greeting = 'halo';
+        //            console.log(greeting+' '+name);
+        //        }(window,'Charley'));
+        //
+        //        console.log(greeting);//halo
+
+        //閉包
+        //        function test(whattosay) {
+        //            return function (name) {
+        //                console.log(whattosay+' '+name);
+        //            }
+        //
+        //        }
+        //         var greet = test('welcome');
+        //        greet('charley');
+        //        console.log(greet);
+        //
+        //        function buildFunctions2(){
+        //
+        //            i = 3;
+        //
+        //            function number(){
+        //                console.log(i);
+        //            }
+        //
+        //            return number;
+        //        }
+        //
+        //        var output = buildFunctions2();
+        //        console.log(output);
+        //        output();
+        //
+        //
+        //        function buildFunctions(){
+        //
+        //            var arr = [];
+        //
+        //            for(var i = 0; i < 3; i++){
+        //                arr.push(
+        //                        (function(j){
+        //                            return function(){
+        //                                console.log(j);
+        //                            };
+        //                        }(i))
+        //                )
+        //            }
+        //
+        //            return arr;
+        //        }
+        //
+        //
+        //        var fs = buildFunctions();
+        //        fs[0](); // 0
+        //        fs[1](); // 1
+        //        fs[2](); // 2
+        //
+        //        function SayHiLater(name){
+        //
+        //            var greeting = 'Hello, ';
+        //
+        //            setTimeout(function(){
+        //
+        //                console.log(greeting + name);
+        //
+        //            }, 3000);
+        //        }
+        //
+        //        SayHiLater('PJCHEN');
+        //
+        //        /*callback function*/
+        //        function CallBackYourName(callback){
+        //            var Greeting = 'Here is some work...';
+        //            callback();
+        //        }
+        //
+        //        CallBackYourName(function(){
+        //            console.log('My name is PJCHEN');
+        //        });
+//
+//        var person = {
+//            firstName: 'charley',
+//            lastName: 'chan',
+//            getFullName: function () {
+//                return this.firstName + ' '+this.lastName;
+//            }
+//
+//        };
+//        console.log(person.getFullName());
+//
+//        //使用bind
+//        var logName = function (location) {
+//            console.log(this.getFullName()+' '+location);//這裡的this指向的window這個Object
+//        };
+//        var logPersonName = logName.bind(person,'locale1');//通過bind()method將person傳入,讓this指向到person這個Object
+//        logPersonName();
+//
+//        //使用call
+//        logName.call(person,'locale2');
+//
+//        //使用apply
+//        logName.apply(person,['locale3']);
+//
+//
+//        //另一個object使用person object 裡的method
+//        var person2 = {
+//            firstName: 'xiao',
+//            lastName: 'ming'
+//        };
+//
+//
+//        console.log(person.getFullName.bind(person2)());
+//        console.log(person.getFullName.call(person2));
+//        console.log(person.getFullName.apply(person2));
+//
+//        //我們根據一個function，複製它來創造一個新的function並且賦予它該參數的預設值時，
+//        //就稱做 function currying ，這種方式很常運用在算數上面。
+//        function multiply(a,b){
+//            return a*b;
+//        }
+//        var multiplyTwo = multiply.bind(this,2);//預設a的值為2
+//        console.log(multiplyTwo(22));
+//        var multiplyTwo = multiply.bind(this,2,10);//預設a、b的值分別為2、10
+//        console.log(multiplyTwo(22));
+
+        function mapForEach(arr,fn){
+            var newArr = [];
+            for (var i=0;i<arr.length;i++){
+                newArr.push(fn(arr[i]));
+            }
+            return newArr;
+        }
+        var arr1=[1,2,3];
+        var arr2= mapForEach(arr1,function (item) {
+            return item*2;
+        });
+        console.log(arr2);
+
+        var arr3= mapForEach(arr1,function (item) {
+            return item>2;
+        });
+        console.log(arr3);
+
+        var checkLimiter = function(limit,item){
+            return item>limit;
+        };
+        var arr4 = mapForEach(arr1,checkLimiter.bind(this,2));
+        console.log(arr4);
+
+        var checkLimiterSimplified = function(limiter) {
+
+            return function(limiter, item) {
+                return item > limiter;
+            }.bind(this, limiter);
+
+        };
+
+        var arr5 = mapForEach(arr1, checkLimiterSimplified(2));
+        console.log(arr5); // [false, false, true]
+
+        var checkLimiterSimplified2 = function(limiter) {
+
+            return function(item) {
+                return item > limiter;
+            };
+
+        };
+
+        var arr6 = mapForEach(arr1, checkLimiterSimplified2(2));
+        console.log(arr6); // [false, false, true]
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

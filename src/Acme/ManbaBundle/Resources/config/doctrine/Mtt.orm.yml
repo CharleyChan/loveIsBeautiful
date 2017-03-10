@@ -1,0 +1,27 @@
+Acme\ManbaBundle\Entity\Mtt:
+    type: entity
+    table: Mtt
+    repositoryClass: Acme\ManbaBundle\Repository\MttRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        issue:
+            type: string
+            length: 255
+        records:
+            type: array
+            nullable: true
+            length: null
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update

@@ -1,0 +1,14 @@
+
+{#<a href="{{ url('random', {'limit': '20'}) }}">Random</a>#}
+{#{{ url('random', {'limit': '20'}) }}#}
+{#-----#}
+{#{{ path('random', {'limit': '20'}) }}#}
+
+<p>Username: {{ app.user }}</p>
+{{ dump(app.user) }}
+{% if app.debug %}
+    <p>Request method: {{ app.request.method }}</p>
+    {{ dump(app.request.method) }}
+    <p>Application Environment: {{ app.environment }}</p>
+{% endif %}
+

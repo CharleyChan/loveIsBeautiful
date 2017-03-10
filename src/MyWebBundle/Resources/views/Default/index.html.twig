@@ -1,0 +1,181 @@
+{% extends "MyWebBundle::layout.html.twig" %}
+
+{#{% block maincontent %}#}
+ {#{{ parent() }}#}
+ {#{% set hello = "<strong>Hello World</strong>" %}#}
+ {#{{ hello }}#}
+ {#{% do 1+3 %}#}
+ {#{% filter lower|escape %}#}
+  {#<STRONG>SOME TEXT</STRONG>#}
+  {#{% endfilter %}#}
+
+ {#{% for i in 'a'|upper ..'z'|upper %}#}
+  {#* {{ i }} {{ loop.index }}#}
+  {#{% else %}#}
+     {#<p>no numbers found</p>#}
+ {#{% endfor %}#}
+
+ {#{% set items = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] %}#}
+
+ {#<table border="1px">#}
+  {#{% for row in items|batch(4, 'No item') %}#}
+   {#<tr>#}
+    {#{% for column in row %}#}
+     {#<td>{{ column }}</td>#}
+    {#{% endfor %}#}
+   {#</tr>#}
+  {#{% endfor %}#}
+ {#</table>#}
+
+
+ {#Filter Test#}
+
+ {#{{ '陈超'|convert_encoding('iso-2022-jp','UTF-8') }}#}
+ {#{{ 'my FIRST car'|capitalize }}#}
+
+ {#{{ "now"|date("d/m/Y H:i:s","Europe/Paris") }}#}
+ {#{{ "now"|date_modify("-1 day")|date("d/m/Y") }}#}
+
+ {#{% set var='charley' %}#}
+ {#{{ var|default('var  is not defined') }}#}
+ {#{{ var.foo|default('foo item on var is not defined') }}#}
+ {#{{ var['foo']|default('foo item on var foo  is not defined') }}#}
+ {#{{ ''|default('passed var is empty') }}#}
+ {#<br/>#}
+ {#{{ var.method(foo|default('foo'))|default('foo') }}#}
+ {#<br/>#}
+ {#{{ '<div>Charley</div>'|escape }} #}{#原样输出这段字符串,不会解析html div#}
+ {#{{ '<div>Charley</div>'|e('html') }} #}{#原样输出这段字符串,不会解析html div#}
+ {#{{ 'var name=getElementById()'|e('js') }} #}{#原样输出这段字符串,不会解析JS#}
+ {#<br/>#}
+ {#{{ [1,2,3,4]|first }}#}
+ {#{{ {a:1,b:2,c:3,d:4}|first }}#}
+ {#{{ '1234'|first }}#}
+ {#<br/>#}
+ {#{{ "I like %s and %s"|format("foo","bar") }}#}
+ {#<br/>#}
+ {#{{ [1,2,3]|join }}#}
+ {#{{ [1,2,3]|join('|') }}#}
+ {#<br/>#}
+ {#{{ 'chenchao'|json_encode(constant('JSON_PRETTY_PRINT')) }}#}
+ {#<br/>#}
+ {#{% set arr=['c','b','d','e'] %}#}
+ {#{% for key in arr|keys %} }}#}
+   {#{{ key }}#}
+  {#{% endfor %}#}
+
+ {#<br/>#}
+ {#{{ [1, 2, 3, 4]|last }}#}
+ {# outputs 4 #}
+
+ {#{{ { a: 1, b: 2, c: 3, d: 4 }|last }}#}
+ {# outputs 4 #}
+
+ {#{{ '1234333'|length }}#}
+ {# outputs 7 #}
+
+ {#{{ "WELcoMe"|upper }}#}
+ {#{{ "WELcoMe"|lower }}#}
+ {#<br/>#}
+ {# filter  merge #}
+ {#{%  set values=[1,2] %}#}
+ {#{% set values=values|merge(['apple','orange'])  %}#}
+ {#{% for v in values %}#}
+  {#{{ v }}#}
+ {#{%  endfor %}#}
+
+ {#<br/>#}
+ {#{{ "I like Twig.\nYou will like it too"|nl2br }}#}{#把\n解析成换行符#}
+
+ {#<br/>#}
+ {#{{ 200.35|number_format }}#}
+ {#{{ 8900.333455|number_format(5,'.',',') }}#}
+
+ {#{% autoescape %}#}
+  {#{{ var|raw }}#}
+ {#{% endautoescape %}#}
+
+ {#<br/>#}
+ {#{% set foo='foo' %}#}
+ {#{{ "I like %this% and %that% ."|replace({'%this%':foo, '%that%':"bar"}) }}#}
+
+ {#{{ '1234asd'|reverse }}#}
+ {#{% for key,value in {1:'a',2:'b',3:'c'}|reverse(true) %}#}
+  {#{{ key }}:{{ value }}#}
+ {#{%- endfor %}#}
+ {#<br/>#}
+ {#{{ 42.55|round }}#}
+ {#{{ 42.55|round(1,'common') }}#}
+{#<br/>#}
+ {#{% for i in [1,2,3,4,5]|slice(0,2) %}#}
+  {#{{ i }}#}
+ {#{% endfor %}#}
+ {#<br/>#}
+ {#{{ '12345'[1:] }}#}
+ {#<br/>#}
+ {#{% set aRR = ['name','age','hobby','subject','fruit'] %}#}
+ {#{% for user in aRR|sort %}#}
+  {#{{ user }}#}
+ {#{% endfor %}#}
+ {#<br/>#}
+ {#{% set foo="one,two,three"|split(',') %}#}
+
+{#{{ 'my first car'|title }}<br/>#}
+ {#{{ 'I like Twig.  '|trim }}#}
+ {#{{ "path-seg*ment"|url_encode }}#}
+ {#<br/>#}
+
+ {# Function #}
+ {#{{ attribute(object,method) is defined? 'method exists': 'Method does not exist' }}#}
+ {#{{ "now"|date(constant("DATE_W3C")) }}#}
+ {#{{ constant('Namespace\\Classname::CONSTANT_NAME') }}#}
+ {#<br/>#}
+ {#{% set start_year = date() | date('Y') %}#}
+ {#{% set end_year = start_year + 5 %}#}
+ {#{{ start_year }} {{ end_year }}#}
+ {#{% for year in start_year..end_year %}#}
+{#{{ cycle(['odd', 'even'], loop.index0) }}#}
+ {#{% endfor %}#}
+
+ {#{% set fruits = ['apple','orange','citrus'] %}#}
+ {#{% for i in 0..10 %}#}
+  {#{{ cycle(fruits,i) }}#}
+ {#{% endfor %}#}
+ {#<pre>{{ dump() }}</pre>#}
+
+ {#{{ include('page.html',ignore_missing = true) }}#}
+ {# When you set the ignore_missing Twig will return an empty string if the#}
+ {#template does not exist#}
+
+{#{{ max(1,2,5,6,5,6) }} {{ min([1,2,5,3,3]) }}#}
+
+ {#{{ max({2: "e", 1: "a", 3: "b", 5: "d", 4: "c"}) }}#}
+ {# max will ignores the keys compares the values , the result is 'e'#}
+
+ {#<pre>#}
+   {#{{ random(['apple', 'orange', 'citrus']) }} #}{# example output: orange #}
+  {#{{ random('ABC') }}                         #}{# example output: C #}
+  {#{{ random() }}                              #}{# example output: 15386094 (works as the native PHP mt_rand function) #}
+  {#{{ random(5) }}                             #}{# example output: 3 #}
+ {#</pre>#}
+
+ {#{% if 6 is divisible by(3) %} #}{# divisible 是否能被整除#}
+{#aaaa#}
+  {#{% else %}#}
+  {#bbbb#}
+{#{% endif %}#}
+
+{#<br/>#}
+ {#{{ 3 is odd }} #}{# odd even 奇、偶数判断#}
+
+ {#{% set foo=false %}#}
+ {#{% if foo is same as (false) %}#}
+   {#the foo attribute really is the 'false' PHP value#}
+ {#{% endif %}#}
+ {#<br/>#}
+ {#{{ 20//7 }}#}
+ {#{{ 2**4 }}#}
+ {#{{ (1..5)|join(':') }}#}
+{#{% endblock %}#}
+
+

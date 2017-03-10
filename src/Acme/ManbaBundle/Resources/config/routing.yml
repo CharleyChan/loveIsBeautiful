@@ -1,0 +1,4 @@
+acme_manba_homepage:
+    path:     /menu
+    defaults: { _controller: AcmeManbaBundle:Default:index }
+

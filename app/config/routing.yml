@@ -1,0 +1,15 @@
+acme_manba:
+    resource: "@AcmeManbaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+my_web:
+    resource: "@MyWebBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+acme_demo:
+    resource: "@AcmeDemoBundle/Resources/config/routing.yml"
+    prefix:   /
